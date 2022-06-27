@@ -1,0 +1,25 @@
+<main class="container rounded my-3 p-5">
+
+  <section class="row px-lg-5 px-0 d-flex justify-content-center align-items-center mb-5">
+    <div class="col-lg-4 col-12">
+      <h1 class="text-center">Breaking App</h1>
+    </div>
+    <div class="col-lg-8 col-12">
+      <input type="text" placeholder="Search Something..." class="inputsearch form-control" (input)="searchBar($event)">
+    </div>
+  </section>
+
+  <section class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 px-3 mb-5">
+    <div class="col" *ngFor="let character of characters | paginator:pagec">
+      <app-card-character [characterIn] = "character" *ngIf="characters?.length != 0"></app-card-character>
+    </div>
+  </section>
+  <section class="row d-flex justify-content-center align-items-center px-3">
+    <div class="4" *ngIf="characters?.length === 0"> <!--<div class="4" *ngIf="(characters | paginator:pagec)?.length === 0" >-->
+      <h2 class="display-4 text-center">There are no characters to show</h2>
+    </div>
+  </section>
+
+  <app-paginator [charsIn]="characters" (pagen)="setPage($event)"></app-paginator>
+
+</main>

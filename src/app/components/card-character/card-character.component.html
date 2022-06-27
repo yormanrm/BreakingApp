@@ -1,0 +1,33 @@
+<div class="card h-100">
+  <div class="card-header text-center">
+    <h5>{{characterIn.name}}</h5>
+  </div>
+  <img src="{{characterIn.img}}" class="card-img-top" alt="{{characterIn.name}}">
+  <div class="card-body">
+    <div class="d-block">
+      <strong>Nickname: <p class="fw-normal">{{characterIn.nickname}}</p></strong>
+    </div>
+    <div class="d-block">
+      <strong>Status:
+        <p class="badge"
+        [ngClass]="{
+          'bg-success':characterIn.status.toLowerCase().includes('alive'),
+          'bg-danger':characterIn.status.toLowerCase().includes('deceased'),
+          'bg-warning':characterIn.status.toLowerCase().includes('dead')
+        }
+        ">
+          {{characterIn.status}}
+        </p>
+      </strong>
+    </div>
+    <div class="d-block">
+      <strong>Portrayed: <p class="fw-normal">{{characterIn.portrayed}}</p></strong>
+    </div>
+    <div class="d-block">
+      <strong>Occupation(s):</strong>
+      <div *ngFor="let o of characterIn.occupation">
+        <p class="fw-normal d-inline">&bull;  {{o}}</p>
+      </div>
+    </div>
+  </div>
+</div>
